@@ -1,0 +1,122 @@
+
+/*comentario
+elemento{
+    proiedad: valor;
+
+}*/
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+a{
+    text-decoration: none;
+}
+header{
+    padding: 10px;
+    background-color: darkkhaki;
+    display: flex;
+}
+header img{
+    width:100px;height:100px;
+}
+
+header nav a{
+    transition: 1s;
+}
+
+header nav a{
+    margin: 5px;
+    list-style-type: none;
+    margin: 20px;
+    display: flex;
+}
+.titulo{
+    font-size: 20px;
+    color:chocolate;
+    font-style: italic;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+footer{
+    background-color: beige;
+}
+
+.claseinfo{
+    font-size: 22px;
+    font-style: italic;
+}
+
+.imagen-entrada{
+    width: 200px;
+    height: 200px;
+    margin-top: 0.5cm;
+    margin-bottom: 0.5cm;
+    border-radius: 20px;
+}
+
+.enlaces{
+    font-size: 15px;
+    font-style: italic;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: brown;
+}
+/*cuando pasamos el mouse por arriba*/
+.enlaces:hover{
+    font-size: 1rem;
+    font-weight: 900;
+}
+/*cuando ya lo visitamos*/
+.enlaces:visited{
+    color: darkolivegreen;
+}
+.p-footer1{
+    font-size: 20px;
+    color:chocolate;
+    font-style: italic;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin-left: 1cm;
+}
+
+.p-footer2{
+    font-size: 20px;
+    font-style: oblique;
+    color:coral;
+    font-family: 'Indie Flower', cursive;
+    font-family: 'Satisfy', cursive;
+    font-family: 'Shadows Into Light', cursive;
+    /*font-family: Verdana, Geneva, Tahoma, sans-serif;*/
+    margin-left: 1cm;
+}
+
+.contacto{
+    font-size: 14px;
+    font-style:normal;
+    color:coral;
+   
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+#img-presentacion{
+    width: 800px;
+    height: 200px;
+}
+
+.tamaño-img-carrusel{    
+   width: 100% !important;
+   height: 400px !important;
+}
+.imgicono{
+    margin: 1cm;
+    width: 50px;
+    height: 50px;
+    
+}
+.img-what{
+    width: 40px;
+    height: 40px;
+    border-radius: 15px;
+    position: fixed;
+    right: 0;
+    bottom: 20px;
+    
+}

@@ -1,0 +1,18 @@
+// @mixin nombre{
+//    propiedades: valor;
+//}
+
+@mixin background-color-principal{
+    background-color: beige;
+}
+
+// mixin com parametros
+@mixin propiedades-flex($direction,$content,$item,$gap){
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $content;
+    align-items: $item;
+    gap:$ga ;
+}
+
+// @include propiedades-flex(row,center ,center ,30px )

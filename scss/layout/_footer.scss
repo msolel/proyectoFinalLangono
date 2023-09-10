@@ -1,0 +1,33 @@
+footer{
+    //background-color: beige;
+    @include background-color-principal;
+    .p-footer1{
+            font-size: 20px;
+            color:$color-letra;
+            font-style: italic;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            margin-left: 1cm;
+        }
+    .p-footer2{
+            font-size: 20px;
+            font-style: oblique;
+            color:coral;
+            font-family: 'Indie Flower', cursive;
+            font-family: 'Satisfy', cursive;
+            font-family: 'Shadows Into Light', cursive;
+            /*font-family: Verdana, Geneva, Tahoma, sans-serif;*/
+            margin-left: 1cm;
+        }   
+    
+    a{
+        .imgicono{
+            margin: 1cm;
+            width: 50px;
+            height: 50px;
+            transition: all 2s;
+        }
+        .imgicono:hover{
+            transform: rotate(360deg);
+        }
+    }
+}

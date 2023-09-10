@@ -1,0 +1,139 @@
+@charset "UTF-8";
+#contenedor {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 5%;
+}
+
+header {
+  padding: 10px;
+  background: linear-gradient(to right, darkkhaki, rgb(228, 220, 110));
+  display: flex;
+}
+header img {
+  width: 100px;
+  height: 100px;
+}
+header nav a {
+  transition: 1s;
+  margin: 5px;
+  list-style-type: none;
+  margin: 20px;
+  display: flex;
+}
+
+/*pagina contacto*/
+.titulo1 {
+  font-size: 25px;
+  color: chocolate;
+  font-style: italic;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  margin-left: 1cm;
+}
+
+.contacto {
+  font-size: 14px;
+  font-style: normal;
+  color: coral;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.imagen-entrada {
+  width: 200px;
+  height: 200px;
+  margin-top: 0.5cm;
+  margin-bottom: 0.5cm;
+  border-radius: 20px;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body .titulo, body .claseinfo {
+  font-size: 20px;
+  color: chocolate;
+  font-style: italic;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+body .img-what {
+  width: 40px;
+  height: 40px;
+  border-radius: 15px;
+  position: fixed;
+  right: 0;
+  bottom: 20px;
+}
+
+/*pagina informacion*/
+.enlaces {
+  font-size: 15px;
+  font-style: italic;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: brown;
+}
+
+/*cuando pasamos el mouse por arriba*/
+.enlaces:hover {
+  font-size: 1rem;
+  font-weight: 900;
+}
+
+/*cuando ya lo visitamos*/
+.enlaces:visited {
+  color: darkolivegreen;
+}
+
+/***********************/
+.titulo2 {
+  font-size: 20px;
+  color: chocolate;
+  font-style: italic;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.enlaces2 {
+  font-size: 10px;
+  font-style: italic;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: brown;
+}
+
+.tamaño-img-carrusel {
+  width: 100% !important;
+  height: 400px !important;
+}
+
+footer {
+  background-color: beige;
+}
+footer .p-footer1 {
+  font-size: 20px;
+  color: chocolate;
+  font-style: italic;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  margin-left: 1cm;
+}
+footer .p-footer2 {
+  font-size: 20px;
+  font-style: oblique;
+  color: coral;
+  font-family: "Indie Flower", cursive;
+  font-family: "Satisfy", cursive;
+  font-family: "Shadows Into Light", cursive;
+  /*font-family: Verdana, Geneva, Tahoma, sans-serif;*/
+  margin-left: 1cm;
+}
+footer a .imgicono {
+  margin: 1cm;
+  width: 50px;
+  height: 50px;
+  transition: all 2s;
+}
+footer a .imgicono:hover {
+  transform: rotate(360deg);
+}
+
+/*# sourceMappingURL=style.css.map */
