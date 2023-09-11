@@ -11,10 +11,7 @@ class Pieza {
         this.cantidad++;
     }
 
-   // quitarUnidad() {
-    //    this.cantidad--;
-    //}
-
+   
     actualizarPrecioTotal() {
         this.precioTotal = this.precio * this.cantidad;
     }
@@ -78,7 +75,7 @@ function chequearCarritoEnStorage() {
     let contenidoEnStorage = JSON.parse(localStorage.getItem("carritoEnStorage"));
 
     // Si existe el array del carrito, lo retornará
-    // y actualizará la tabla de compras
+    // y actualizará los datos de compras
     if (contenidoEnStorage) {
         // Para recuperarla la instancias de clase que se pierden en el Storage
         // instanciando la clase en cada objeto del array
@@ -105,16 +102,16 @@ function chequearCarritoEnStorage() {
 }
 
 function imprimirProductosEnHTML(array) {
-    // div que contendrá nuestras cards
+    // div que contendrá las cards
     let contenedor = document.getElementById("contenedor");
     contenedor.innerHTML = "";
 
-    // Recorremos el array y por cada item imprimimos una card
+    // Recorro el array y por cada item imprimimos una card
     for (const pieza of array) {
-        // Creamos el contendor individual para cada card
+        // Creo el contendor individual para cada card
         let card = document.createElement("div");
 
-        // Agregamos el contenido a la card
+        // Agrego el contenido a la card
         
         card.innerHTML = `
         <div class="card text-center" style="width: 18rem;">
@@ -157,7 +154,7 @@ function agregarAlCarrito(idProducto) {
         // Si se encuentra la pieza  se le sumará uno a la cantidad de esa marca en el carrito
         let index = carrito.findIndex((elemento) => elemento.id === piezaEnCarrito.id);
 
-        // Al obtener el index donde se halla el elemento ya agregadoal carrito, 
+        // Al obtener el index donde se halla el elemento ya agregado al carrito, 
         //llamo a los métodos que actualizaran unidades y precio total
         // De unidades repetidas
         carrito[index].agregarPieza();
@@ -173,30 +170,7 @@ function agregarAlCarrito(idProducto) {
     imprimirTabla(carrito);
 }
 
-function eliminarDelCarrito(id) {
-    // Busco el item en el carrito
-    // Primero busco que coincida el ID recibido con el ID del objeto
-    // a eleminar en el carrito
-    let pieza = carrito.find((pieza) => pieza.id === id);
 
-    // busco el índice del producto en el carrito a eliminar
-    let index = carrito.findIndex((element) => element.id === pieza.id);
-
-    // Se revisa el stock para saber si hay que restarle 1
-    // al stock o quitar el elemento del array
-    if (pieza.cantidad > 1) {
-        // Si hay más de una unidad de ese producto
-        carrito[index].quitarUnidad();
-        carrito[index].actualizarPrecioTotal();
-    } else {
-        // Si queda solo una unidad, se elimina del array
-        
-        carrito.splice(index, 1);
-    }
-
-    localStorage.setItem("carritoEnStorage", JSON.stringify(carrito));
-    imprimirTabla(carrito);
-}
 
 function eliminarCarrito() {
     carrito.length = 0;
@@ -211,7 +185,6 @@ function obtenerPrecioTotal(array) {
 }
 
 // Recibe el contenido del carrito y lo imprime en el html
-// en una tabla
 function imprimirTabla(array) {
     let precioTotal = obtenerPrecioTotal(array);
     let contenedor = document.getElementById("carrito");
@@ -229,7 +202,7 @@ function imprimirTabla(array) {
 
     contenedor.appendChild(mostrar);
 
-    // Despues de dibujar la tabla, obtengo el id del body de la tabla
+    // obtengo el id del body 
     // donde imprimp los datos del array
     let bodyCarrito = document.getElementById("bodyCarrito");
 
