@@ -17,58 +17,60 @@ class Pieza {
     }
 }
 
-// Constantes y variables
-const piezas = [
-    {
-        id: 0,
-        tipo: "Ceramica_bandejas",
-        descripcion: "Bandejas",
-        precio: 1000,
-        img: "./img/ceramica1.jpeg",
-    },
-    {
-        id: 1,
-        tipo: "Ceramica_cuenco",
-        descripcion: "Cuenco",
-        precio: 900,
-        img: "./img/ceramica2.jpeg",
-    },
-    {
-        id: 2,
-        tipo: "Ceramica_cazuela",
-        descripcion: "Cazuelas",
-        precio: 1500,
-        img: "./img/ceramica4.jpeg",
-    },
-    {
-        id: 3,
-        tipo: "Mosaiquismo_tutor",
-        descripcion: "Tutor en disco de arado",
-        precio: 2800,
-        img: "./img/mosaiquismo1.jpeg",
-    },
-    {
-        id: 4,
-        tipo: "Mosaiquismo_30",
-        descripcion: "Maceta de 30 x 30",
-        precio: 1900,
-        img: "./img/mosaiquismo2.jpeg",
-    },
-    {
-        id: 5,
-        tipo: "Mosaiquismo_30Azul",
-        descripcion: "Maceta de 30 x 30 Azul",
-        precio: 2000,
-        img: "./img/mosaiquismo3.jpeg",
-    },
-    {
-        id: 6,
-        tipo: "Mosaiquismo_jardinera",
-        descripcion: "Maceta jardinera",
-        precio: 2000,
-        img: "./img/mosaiquismo5.jpeg",
-    },
-];
+
+const lista = document.querySelector("#contenedor")
+const mostrarError = document.getElementById("error")
+contenedor.innerHTML = "";
+
+const pedirDatos = async ()=>{
+    try {
+        // Link relativo en relacion al HTML donde se llama
+        // const datosIniciales = await fetch("./productos.json"
+        // Link absoluto en relacion a la raiz
+        const datosIniciales = await fetch("./articulos.json")
+        const datosProcesados = await datosIniciales.json()
+        datosProcesados.forEach(articulo => {
+          
+        // Creo el contendor individual para cada card
+        let card = document.createElement("div");
+
+        // Agrego el contenido a la card
+        
+        card.innerHTML = `
+        <div class="card text-center" style="width: 18rem;">
+        <div class="card-body">
+        <img src="${articulo.img}" id="" class="card-img-top img-fluid" alt="">
+        <h4 class="card-title">${articulo.tipo}</h4>
+        <h5 class="card-subtitle mb-2 text-muted">${articulo.descripcion}</h5>
+        <p class="card-text">$${articulo.precio}</p>
+        
+        <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+        <button id="agregar${articulo.id}" type="button" class="btn btn-dark"> Agregar </button>
+        </div>
+        </div>
+        </div>      
+        `;
+        contenedor.appendChild(card);
+        // Una vez que tengo creada la card, la agrego al contenedor
+        // que obtuve desde el HTML
+
+        // Luego de agregar la card al DOM,
+        // asigno el evento al botón correspondiente, habiendo nombrado su id de manera
+        // dinámica
+        
+        let boton = document.getElementById(`agregar${articulo.id}`);
+       
+         boton.addEventListener("click", function() {
+             agregarAlCarrito(articulo);
+            })
+        //***************************** */
+        });
+    } catch (error) {
+        console.warn(error)
+        mostrarError.innerText="Se produjo un error"
+    }
+}
+
 
 // ----- Chequea que esta en el Storage ----- //
 function chequearCarritoEnStorage() {
@@ -101,54 +103,10 @@ function chequearCarritoEnStorage() {
     return [];
 }
 
-function imprimirProductosEnHTML(array) {
-    // div que contendrá las cards
-    let contenedor = document.getElementById("contenedor");
-    contenedor.innerHTML = "";
-
-    // Recorro el array y por cada item imprimimos una card
-    for (const pieza of array) {
-        // Creo el contendor individual para cada card
-        let card = document.createElement("div");
-
-        // Agrego el contenido a la card
-        
-        card.innerHTML = `
-        <div class="card text-center" style="width: 18rem;">
-        <div class="card-body">
-        <img src="${pieza.img}" id="" class="card-img-top img-fluid" alt="">
-        <h4 class="card-title">${pieza.tipo}</h4>
-        <h5 class="card-subtitle mb-2 text-muted">${pieza.descripcion}</h5>
-        <p class="card-text">$${pieza.precio}</p>
-        
-        <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-        <button id="agregar${pieza.id}" type="button" class="btn btn-dark"> Agregar </button>
-        </div>
-        </div>
-        </div>      
-        `;
-
-        contenedor.appendChild(card);
-        // Una vez que tengo creada la card, la agrego al contenedor
-        // que obtuve desde el HTML
-
-        // Luego de agregar la card al DOM,
-        // asigno el evento al botón correspondiente, habiendo nombrado su id de manera
-        // dinámica
-        let boton = document.getElementById(`agregar${pieza.id}`);
-        
-       
-         boton.addEventListener("click", function() {
-             agregarAlCarrito(pieza.id);
-         })
-    }
-}
-
-
-function agregarAlCarrito(idProducto) {
+function agregarAlCarrito(producto) {
     // Verifico si esa pieza ya se encuentra en el array
-    
-    let piezaEnCarrito = carrito.find((pieza) => pieza.id === idProducto);
+    console.log("entro")
+    let piezaEnCarrito = carrito.find((articulo) => articulo.id === producto.id);
 
     if (piezaEnCarrito) {
         // Si se encuentra la pieza  se le sumará uno a la cantidad de esa marca en el carrito
@@ -162,7 +120,7 @@ function agregarAlCarrito(idProducto) {
     } else {
         // Si la pieza no se encuentra en el carrito
         let cantidad = 1;
-        carrito.push(new Pieza(piezas[idProducto], cantidad));
+        carrito.push(new Pieza(producto, cantidad));
     }
 
     // Actualizo el storage y el contenido de la tabla
@@ -225,25 +183,37 @@ function imprimirTabla(array) {
 	`;
 }
 
-function filtrarBusqueda(e) {
-    e.preventDefault();
 
-    // Tomo el value del input y le agrego toLowerCase para que la búsqueda no sea
-    // case sensitive
-    let ingreso = document.getElementById("busqueda").value.toLowerCase();
-    let arrayFiltrado = piezas.filter((elemento) => elemento.tipo.toLowerCase().includes(ingreso));
+const finalizarCompra = ()=>{
+    eliminarCarrito()
+    let mensaje = document.getElementById("MensajeFinal")
+    mensaje.innerHTML = "Muchas gracias por su compra, los esperamos pronto"
+    Swal.fire({
+        title: 'Muchas gracias!',
+        text: 'Su compra fue realizada con exito.',
+        imageUrl: '../img/logo.jpeg',
+        imageWidth: 200,
+        imageHeight: 200,
+        imageAlt: 'Custom image',
+      })
 
-    imprimirProductosEnHTML(arrayFiltrado);
 }
 
-// --- Eventos
-let btnFiltrar = document.getElementById("btnFiltrar");
-btnFiltrar.addEventListener("click", filtrarBusqueda);
+// DOM
+const compraFinal = document.getElementById("formDatosCliente")
+compraFinal.addEventListener("submit",(event)=>{
+    event.preventDefault()
+    if(carrito.length>0){
+        finalizarCompra(event)
+    } else {
+        Swal.fire('No hay productos cargado')
+    }
+})
+
 
 // Ejecución del código
 // --- Invocación de funciones ---
-imprimirProductosEnHTML(piezas);
-
+pedirDatos()
 // Consulta al Storage para saber si hay información almacenada
 // Si hay datos, se imprimen en el HTML al refrescar la página
 const carrito = chequearCarritoEnStorage();

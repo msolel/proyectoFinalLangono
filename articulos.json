@@ -1,0 +1,51 @@
+[
+    {
+        "id": 0,
+        "tipo": "Ceramica_bandejas",
+        "descripcion": "Bandejas",
+        "precio": 1000,
+        "img": "./img/ceramica1.jpeg"
+    },
+    {
+        "id": 1,
+        "tipo": "Ceramica_cuenco",
+        "descripcion": "Cuenco",
+        "precio": 900,
+        "img": "./img/ceramica2.jpeg"
+    },
+    {
+        "id": 2,
+        "tipo": "Ceramica_cazuela",
+        "descripcion": "Cazuelas",
+        "precio": 1500,
+        "img": "./img/ceramica4.jpeg"
+    },
+    {
+        "id": 3,
+        "tipo": "Mosaiquismo_tutor",
+        "descripcion": "Tutor en disco de arado",
+        "precio": 2800,
+        "img": "./img/mosaiquismo1.jpeg"
+    },
+    {
+        "id": 4,
+        "tipo": "Mosaiquismo_30",
+        "descripcion": "Maceta de 30 x 30",
+        "precio": 1900,
+        "img": "./img/mosaiquismo2.jpeg"
+    },
+    {
+        "id": 5,
+        "tipo": "Mosaiquismo_30Azul",
+        "descripcion": "Maceta de 30 x 30 Azul",
+        "precio": 2000,
+        "img": "./img/mosaiquismo3.jpeg"
+    },
+    {
+        "id": 6,
+        "tipo": "Mosaiquismo_jardinera",
+        "descripcion": "Maceta jardinera",
+        "precio": 2000,
+        "img": "./img/mosaiquismo5.jpeg"
+    }
+]
